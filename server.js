@@ -5,7 +5,7 @@ import app from './app.js'
 dotenv.config();
 
 
-mongoose.connect("mongodb+srv://reviewCardPanthil:L0phtCrack@l0phtcrackcluster.prn9rqz.mongodb.net/ReviewCard?retryWrites=true&w=majority", {
+mongoose.connect(process.env.URI, {
     // useNewUrlParser: true,
     // useCreateIndex: true,
     // useUnifiedTopology: true
