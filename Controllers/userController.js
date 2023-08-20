@@ -1,5 +1,4 @@
 import otpGenerator from 'otp-generator';
-import multer from 'multer'
 import Jwt from "jsonwebtoken";
 import { User } from '../Model/userModel.js';
 import { Otp } from '../Model/otpModel.js';
@@ -65,8 +64,7 @@ export const verifyOtp = async (req, res) => {
 
 export const updateProfile = async (req, res) => {
     const { firstName, lastName, gender, phone, dob, area, city, state, country, pincode } = req.body;
-    const fileName = req.file.filename;
-    console.log(fileName)
+    const fileName =`${process.cwd()}/assets/avatar/${req.file.filename}`;
     const result = await User.updateMany({ "userData.phone": phone }, {
         $set: {
             userData:{
@@ -75,6 +73,7 @@ export const updateProfile = async (req, res) => {
             lastName: lastName,
             gender: gender,
             DOB: dob,
+            phone:phone,
             area: area,
             city: city,
             state: state,

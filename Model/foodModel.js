@@ -1,32 +1,44 @@
 import { Schema,model } from 'mongoose';
 
-export const foodReview = model('foodReview', Schema({
+export const Food = model('foodReview', Schema({
     foodAssets:{
         shopImage : {
             type : String,
             default:''
         },
-        foodImage : [{
+        foodImage : {
             image1:{
                 type:String,
                 default:''
             },
-            image1:{
+            image2:{
                 type:String,
                 default:''
             },
-            image1:{
+            image3:{
                 type:String,
                 default:''
             },
-        }]
+        }
     },
     shopName : {
         type : String,
         default:''
     },
-    location : {
+    foodName:{
         type : String,
+        default:''
+    },
+    location : {
+      type : String,
+     default:''
+    },
+    lattitude:{
+        type : Number,
+        default:''
+    },
+    longitude:{
+        type : Number,
         default:''
     },
     state : {
@@ -42,6 +54,10 @@ export const foodReview = model('foodReview', Schema({
         default:''
     },
     pincode : {
+        type : String,
+        default:''
+    },
+    description : {
         type : String,
         default:''
     },
@@ -67,6 +83,10 @@ export const foodReview = model('foodReview', Schema({
             type : Number,
             default:''
         },
+    },
+    token:{
+        type:String,
+        default:''
     },
 
     createdAt : {type:Date,default: Date.now}

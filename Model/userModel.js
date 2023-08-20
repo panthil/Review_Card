@@ -24,8 +24,7 @@ const userSchema = Schema({
             default: ''
         },
         phone :{
-            type : String,
-            default: ''
+            type : Number,
         },
         area :{
             type : String,
