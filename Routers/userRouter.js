@@ -1,6 +1,7 @@
 import express from 'express';
 import { signUp,verifyOtp,updateProfile,getFavoriteFood,postFavoriteFood } from '../Controllers/userController.js'
 import {foodReview} from '../Controllers/foodController.js'
+import {yourReview,lastMonthReview,lastYearReview} from '../Controllers/yourReview.js'
 import {restorentReview} from '../Controllers/restorentController.js'
 import { areaRestorent,areaFood,cityRestorent,cityFood,nearRestorent,nearFood,foodImage } from '../Controllers/Dashboard.js';
 import {avatar,food} from '../configuration/multer.js'
@@ -22,6 +23,9 @@ router.route('/dashboard/cityFood').post(cityFood)
 router.route('/dashboard/nearRestorent').post(nearRestorent)
 router.route('/dashboard/nearFood').post(nearFood)
 router.route('/dashboard/foodImage').post(foodImage)
+router.route('/review/yourReview').post(yourReview)
+router.route('/review/lastMonthReview').post(lastMonthReview)
+router.route('/review/lastYearReview').post(lastYearReview)
 
 
 export default router;

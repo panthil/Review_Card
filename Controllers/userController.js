@@ -126,7 +126,6 @@ export const getFavoriteFood =async (req,res)=>{
 
 export const postFavoriteFood = async (req,res)=>{
     const {phone,type,cuisine,fastFood,favoriteFood,famousFoodArea,famousFoodCity} = req.body;
-    const foodData = await User.findOne({"userData.phone": phone })
 
     const result = await User.updateMany({ "userData.phone": phone }, {
         $set: {

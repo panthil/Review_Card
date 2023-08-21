@@ -116,7 +116,7 @@ export const cityFood = async (req, res) => {
   const data = await Food.find({ city: city })
 
   const mostReviewedFoodStats = findMostReviewedFoodWithStats(data);
-  const { reviewData } = mostReviewedFoodStats;
+  const { reviewData } =await mostReviewedFoodStats;
   if (reviewData) {
     res.send({
       status: {
