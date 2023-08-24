@@ -407,5 +407,48 @@ export const foodImage = async (req, res) => {
 
 
 export const serchFoodRestorent = async (req, res) => {
-  
+  const {value,page,pageData,viewAll} = req.body;
+  const data1 =await Restorent.find({restorentsName:value})
+  const data2 =await Food.find({shopName:value})
+  const data3 =await Restorent.find({foodName:value})
+  const startIdx = (page - 1) * pageData;
+  const endIdx = startIdx + pageData;
+  if (data1.length || data2.length || data3.length) {
+   if (viewAll) {
+   let allData = []
+   const showData1 = data1.slice(Math.floor(startIdx/3),Math.floor(endIdx/3))
+   const showData2 = data2.slice(Math.floor(startIdx/3),Math.floor(endIdx/3))
+   const showData3 = data3.slice(Math.floor(startIdx/3),Math.floor(endIdx/3))
+   allData = allData.concat(showData1,showData2,showData3)
+   res.send({
+    message:"Data Fetched",
+    Data:allData,
+    status:{
+      message:"ok",
+      statusCode:200
+    }
+   })
+   }else{
+    const showData1 = data1.length<=3?data1:data1.slice(0,3)
+    const showData2 = data2.length<=3?data2:data2.slice(0,3)
+    const showData3 = data3.length<=3?data3:data3.slice(0,3)
+    let showData = []
+    showData = showData.concat(showData1,showData2,showData3)
+    
+    res.send({
+     message:"Data Fetched",
+     Data:showData,
+     status:{
+       message:"ok",
+       statusCode:200
+     }
+    })
+   }
+  }else{
+    res.send({
+      message:"Data Not Found",
+      serchData:value
+    })
+  }
+
 }
