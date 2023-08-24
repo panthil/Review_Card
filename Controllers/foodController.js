@@ -4,6 +4,7 @@ import { Food } from '../Model/foodModel.js'
 export const foodReview = async (req,res) =>{
    const {token,foodName,shopName,location,lattitude,longitude,state,city,area,pincode,description,overallReview,testlReview,qualityReview,cleanlinessReview,staffReview} = req.body;
    const files = req.files;
+    // console.log(files)
    const shopimage = `${process.cwd()}/assets/food/shopImage/${files.shopImage.filename}`
    const foodImage1 = `${process.cwd()}/assets/food/foodImage/${files.foodImage[0].filename}`
    const foodImage2 = `${process.cwd()}/assets/food/foodImage/${files.foodImage[1].filename}`
